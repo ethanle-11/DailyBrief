@@ -1,0 +1,15 @@
+# Python virtual environment
+.venv/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+
+# Secrets
+.env
+
+# macOS
+.DS_Store
+
+# Python package metadata
+*.egg-info/
