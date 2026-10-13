@@ -1,0 +1,15 @@
+[project]
+name = "dailybrief"
+version = "0.1.0"
+description = "A personal daily briefing and notification service."
+requires-python = ">=3.13"
+
+dependencies = [
+    "fastapi[standard]",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]
