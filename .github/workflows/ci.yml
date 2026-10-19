@@ -9,6 +9,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: postgresql+psycopg://dailybrief:password@localhost:5432/dailybrief
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
