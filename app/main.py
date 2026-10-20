@@ -1,6 +1,7 @@
 from typing import Annotated
 
-from fastapi import Depends, FastAPI
+import httpx
+from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -41,4 +42,10 @@ def create_briefing(db: Annotated[Session, Depends(get_db)]):
 
 @app.get("/dining/lunch")
 def get_lunch():
-    return get_lunch_menu()
+    try:
+        return get_lunch_menu()
+    except httpx.HTTPError as exc:
+        raise HTTPException(
+            status_code=503,
+            detail="UNC Dining service is currently unavailable",
+        ) from exc

@@ -9,7 +9,7 @@ STATIONS = [
 ]
 
 def fetch_menu_page() -> str:
-    response = httpx.get(LENOIR_URL)
+    response = httpx.get(LENOIR_URL, timeout=10.0)
     response.raise_for_status()
     return response.text
 
@@ -68,7 +68,7 @@ def get_station_items(html: str, station_name: str):
 
 def get_lunch_menu() -> dict[str, list[str]]:
     html = fetch_menu_page()
-    res = dict()
+    res = {}
     for station in STATIONS:
         res[station] = get_station_items(html, station)
     return res
